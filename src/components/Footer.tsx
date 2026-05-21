@@ -19,9 +19,9 @@ export default function Footer() {
           <span className="text-xl sm:text-2xl font-display font-black uppercase text-3d tracking-tight">
             KEZ<span className="text-xp-gold"> Events</span>
           </span>
-          <span className="font-heading font-black text-[9px] uppercase tracking-widest text-xp-gold mt-0.5">
+          {/*<span className="font-heading font-black text-[9px] uppercase tracking-widest text-xp-gold mt-0.5">
             L'ÉVÉNEMENT CARIBÉEN EXCLUSIF
-          </span>
+          </span>*/}
         </div>
 
         <motion.div
@@ -110,7 +110,7 @@ export default function Footer() {
                 ACCÈS STRICT
               </h3>
               <p className="font-sans font-bold text-xs sm:text-sm text-xp-gray uppercase leading-relaxed tracking-wide">
-                Identité requise à l'entrée. La direction se réserve le droit d'admission. Tenue correcte et esprit festif exigés.
+                Identité requise à l'entrée. La direction se réserve le droit d'admission.
               </p>
             </div>
           </div>
@@ -118,7 +118,7 @@ export default function Footer() {
           <div className="border-t-3 border-dotted border-xp-dark/20 mt-6 pt-4 flex items-center gap-2 text-xp-red">
             <MapPinIcon className="w-5 h-5" />
             <span className="font-heading font-black text-xs uppercase tracking-widest">
-              LIEU SECRET &bull; PORT-AU-PRINCE
+              LIEU SECRET &bull; GONAÏVES
             </span>
           </div>
         </motion.div>
@@ -129,7 +129,7 @@ export default function Footer() {
       <div className="relative z-10 w-full px-4 md:px-8 pb-4">
         <div className="bg-xp-alabaster border-4 border-xp-dark p-4 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="font-sans text-[10px] sm:text-xs text-xp-dark font-black uppercase tracking-widest text-center sm:text-left">
-            &copy; {new Date().getFullYear()} KEZ EVENTS. TOUS DROITS RÉSERVÉS.
+            &copy; {new Date().getFullYear()} PRIAM. TOUS DROITS RÉSERVÉS.
           </p>
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-xp-red animate-pulse" />
