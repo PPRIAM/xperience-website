@@ -16,6 +16,7 @@ export default function Home() {
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
   const lastScrollTime = useRef(0);
   const touchStart = useRef({ x: 0, y: 0 });
+  const heroScrollRef = useRef<HTMLDivElement>(null);
 
   const goToSection = (targetIndex: number) => {
     if (isAnimating) return;
@@ -259,8 +260,8 @@ export default function Home() {
         className="fixed inset-0 w-full h-screen"
         style={{ zIndex: 10 }}
       >
-        <div className="w-full h-full overflow-y-auto">
-          <Hero />
+        <div ref={heroScrollRef} className="w-full h-full overflow-y-auto">
+          <Hero scrollContainerRef={heroScrollRef} />
         </div>
       </div>
 

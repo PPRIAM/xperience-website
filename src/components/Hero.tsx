@@ -4,12 +4,13 @@ import { motion, useScroll, useTransform, useMotionValue, useSpring, animate } f
 import { useRef, useEffect, useState } from 'react';
 import { PhoneIcon } from '@heroicons/react/24/solid';
 
-export default function Hero() {
+export default function Hero({ scrollContainerRef }: { scrollContainerRef?: React.RefObject<HTMLElement | null> }) {
   const sectionRef = useRef<HTMLElement>(null);
   const [hasScrolled, setHasScrolled] = useState(false);
 
   // Scroll-driven transforms for mobile parallax
   const { scrollYProgress } = useScroll({
+    container: scrollContainerRef,
     target: sectionRef,
     offset: ['start start', 'end start'],
   });
@@ -78,7 +79,7 @@ export default function Hero() {
       </motion.div>
 
       {/* === Main content — scroll-parallaxed === */}
-      <div className="flex-grow flex flex-col items-center justify-center text-center px-4 py-20 relative z-10 gap-6">
+      <div className="flex-grow flex flex-col items-center justify-center text-center px-4 py-12 md:py-20 relative z-10 gap-6">
 
         {/* Big sticker-style "Xperience" wordmark — parallaxes upward on scroll */}
         <motion.div
@@ -180,7 +181,7 @@ export default function Hero() {
       </motion.div>
 
       {/* === Bottom contact strip — poster footer bar replica === */}
-      <div className="relative z-10 w-full bg-xp-alabaster border-t-6 border-xp-dark py-4 px-6 md:px-12 select-none">
+      <div className="relative z-30 w-full bg-xp-alabaster border-t-6 border-xp-dark py-4 px-6 md:px-12 select-none">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3 text-center md:text-left">
 
           {/* Left: Location */}
