@@ -1,0 +1,255 @@
+@import "tailwindcss";
+
+@theme {
+  /* === XPERIENCE BRAND COLORS — POSTER-ALIGNED === */
+  --color-xp-orange: #FF6A00;   /* Vivid poster orange */
+  --color-xp-gold: #FFCC00;     /* Saturated gold-yellow */
+  --color-xp-red: #CC0000;      /* Deep poster red */
+  --color-xp-teal: #00B4D8;
+  --color-xp-dark: #121212;
+  --color-xp-alabaster: #F8F9FA;
+  --color-xp-gray: #334155;
+
+  /* === BRAND FONTS === */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+
+  /* === RETRO DROP SHADOWS === */
+  --shadow-retro-flat: 6px 6px 0px 0px #121212;
+  --shadow-retro-deep: 12px 12px 0px 0px #121212;
+  --shadow-retro-color: 6px 6px 0px 0px #CC0000;
+}
+
+/* === GLOBAL BASE === */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow: hidden !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  width: 100vw !important;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+}
+
+body {
+  background-color: var(--color-xp-dark);
+  font-family: var(--font-sans);
+}
+
+/* === COMIC BOOK VISUAL FRAMEWORK === */
+
+/* Primary Halftone — warm amber dots, strong & visible like the poster */
+.halftone-overlay {
+  background-image: radial-gradient(circle, rgba(255, 180, 0, 0.32) 2.5px, transparent 3px);
+  background-size: 18px 18px;
+}
+
+/* Dark halftone for panels */
+.halftone-dark {
+  background-image: radial-gradient(circle, rgba(18, 18, 18, 0.28) 2px, transparent 2.5px);
+  background-size: 12px 12px;
+}
+
+/* === TROPICAL BOTANICAL BACKGROUND LAYER === */
+/* Repeating SVG pattern of fan palms + hibiscus leaves — matches poster bg */
+.tropical-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320' viewBox='0 0 320 320'%3E%3Cg opacity='0.18' fill='%23CC0000'%3E%3C!-- Fan palm leaf top-left --%3E%3Cpath d='M20 160 Q40 80 80 40 Q60 80 60 160Z'/%3E%3Cpath d='M20 160 Q60 100 120 80 Q80 110 60 160Z'/%3E%3Cpath d='M20 160 Q80 130 140 130 Q90 145 60 160Z'/%3E%3Cpath d='M20 160 Q5 100 0 40 Q15 100 20 160Z'/%3E%3Cpath d='M20 160 Q-10 110 -20 60 Q5 110 20 160Z'/%3E%3C!-- Hibiscus petal cluster center --%3E%3Cellipse cx='200' cy='80' rx='28' ry='14' transform='rotate(-30 200 80)'/%3E%3Cellipse cx='200' cy='80' rx='28' ry='14' transform='rotate(30 200 80)'/%3E%3Cellipse cx='200' cy='80' rx='28' ry='14' transform='rotate(90 200 80)'/%3E%3Cellipse cx='200' cy='80' rx='28' ry='14' transform='rotate(150 200 80)'/%3E%3Ccircle cx='200' cy='80' r='8'/%3E%3C!-- Fan palm leaf bottom-right --%3E%3Cpath d='M300 240 Q280 160 240 120 Q260 160 260 240Z'/%3E%3Cpath d='M300 240 Q260 180 200 160 Q240 190 260 240Z'/%3E%3Cpath d='M300 240 Q200 200 160 210 Q220 215 260 240Z'/%3E%3Cpath d='M300 240 Q315 180 320 120 Q305 180 300 240Z'/%3E%3Cpath d='M300 240 Q330 190 340 140 Q315 190 300 240Z'/%3E%3C!-- Small hibiscus top-right --%3E%3Cellipse cx='290' cy='40' rx='18' ry='9' transform='rotate(-30 290 40)'/%3E%3Cellipse cx='290' cy='40' rx='18' ry='9' transform='rotate(30 290 40)'/%3E%3Cellipse cx='290' cy='40' rx='18' ry='9' transform='rotate(90 290 40)'/%3E%3Ccircle cx='290' cy='40' r='5'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 320px 320px;
+  background-repeat: repeat;
+  animation: tropical-drift 28s ease-in-out infinite;
+}
+
+/* Thick-bordered hand-drawn style panel */
+.comic-panel {
+  border: 5px solid #121212;
+  box-shadow: var(--shadow-retro-flat);
+  border-radius: 4px; /* Comics have sharp or minimal radius corners */
+  transition: transform 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 250ms ease;
+  background-color: var(--color-xp-alabaster);
+  color: var(--color-xp-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.comic-panel:hover {
+  transform: scale(1.02) translateY(-4px) rotate(0.5deg);
+  box-shadow: var(--shadow-retro-deep);
+  z-index: 10;
+}
+
+/* Comic caption box - narration container */
+.comic-caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #FFC107;
+  color: #121212;
+  border-right: 4px solid #121212;
+  border-bottom: 4px solid #121212;
+  padding: 0.5rem 1.25rem;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transform: skew-x(-6deg);
+  transform-origin: top left;
+  z-index: 5;
+  box-shadow: 2px 2px 0px rgba(0,0,0,0.15);
+}
+
+/* Speech/Dialogue bubble pointer */
+.speech-bubble-tip {
+  position: absolute;
+  bottom: -15px;
+  left: 40px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 16px solid #121212;
+}
+
+.speech-bubble-tip::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: -9px;
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 13px solid #F8F9FA;
+}
+
+/* Volumetric text effect */
+.text-3d {
+  text-shadow: 4px 4px 0px #D32F2F, 8px 8px 0px #121212;
+  -webkit-text-stroke: 2px #121212;
+}
+
+.text-3d-inverse {
+  text-shadow: 4px 4px 0px #FFC107, 8px 8px 0px #121212;
+  -webkit-text-stroke: 2px #121212;
+}
+
+.text-3d-teal {
+  text-shadow: 4px 4px 0px #00B4D8, 8px 8px 0px #121212;
+  -webkit-text-stroke: 2px #121212;
+}
+
+/* Responsive Hero Title pop-art styling to prevent overlaps/distortion */
+.hero-title {
+  font-size: clamp(3rem, 14vw, 8rem);
+  color: #FFCC00;
+  -webkit-text-stroke: 3px #CC0000;
+  text-shadow: 4px 4px 0 #CC0000, 8px 8px 0 #121212;
+  letter-spacing: -0.03em;
+}
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: clamp(5.5rem, 15vw, 11rem);
+    -webkit-text-stroke: 5px #CC0000;
+    text-shadow: 5px 5px 0 #CC0000, 10px 10px 0 #121212;
+  }
+}
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: clamp(8rem, 18vw, 14rem);
+    -webkit-text-stroke: 6px #CC0000;
+    text-shadow: 6px 6px 0 #CC0000, 12px 12px 0 #121212;
+  }
+}
+
+/* Left color bar for Section Headings */
+.heading-bar-red {
+  border-left: 8px solid #D32F2F;
+  padding-left: 1.25rem;
+}
+
+.heading-bar-teal {
+  border-left: 8px solid #00B4D8;
+  padding-left: 1.25rem;
+}
+
+/* Orange dotted bottom border */
+.heading-dotted-orange {
+  border-bottom: 6px dotted #FF5722;
+  padding-bottom: 0.75rem;
+}
+
+/* === ANIMATIONS === */
+
+/* Gradient hue shift — vivid orange cycles through warm tones */
+@keyframes gradient-shift {
+  0%   { background: linear-gradient(160deg, #FF8500 0%, #FF4500 40%, #CC0000 100%); }
+  25%  { background: linear-gradient(175deg, #FF9A00 0%, #FF3200 35%, #AA0000 100%); }
+  50%  { background: linear-gradient(145deg, #FF6B00 0%, #EE4000 48%, #DD0000 100%); }
+  75%  { background: linear-gradient(165deg, #FF8800 0%, #FF4800 38%, #BB0000 100%); }
+  100% { background: linear-gradient(160deg, #FF8500 0%, #FF4500 40%, #CC0000 100%); }
+}
+
+.animated-gradient {
+  animation: gradient-shift 12s ease-in-out infinite;
+}
+
+/* Botanical pattern slow drift */
+@keyframes tropical-drift {
+  0%   { background-position: 0px 0px; }
+  33%  { background-position: 120px 60px; }
+  66%  { background-position: -80px 140px; }
+  100% { background-position: 0px 0px; }
+}
+
+/* Halftone gentle breathing */
+@keyframes halftone-breathe {
+  0%, 100% { opacity: 0.65; }
+  50%       { opacity: 1; }
+}
+
+.animated-halftone {
+  animation: halftone-breathe 7s ease-in-out infinite;
+}
+
+/* Float badge */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(-1.5deg); }
+  50% { transform: translateY(-8px) rotate(1.5deg); }
+  100% { transform: translateY(0px) rotate(-1.5deg); }
+}
+
+.animate-float {
+  animation: float 3.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0px rgba(211, 47, 47, 0.4); }
+  50% { box-shadow: 0 0 24px rgba(211, 47, 47, 0.8); }
+}
+
+.animate-glow {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+/* === SCROLL INDICATOR === */
+@keyframes scroll-bounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(16px); }
+  100% { transform: translateY(0); }
+}
+
+.animate-scroll {
+  animation: scroll-bounce 1.5s ease-in-out infinite;
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
