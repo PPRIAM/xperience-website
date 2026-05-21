@@ -116,22 +116,43 @@ export default function Home() {
   };
 
   useEffect(() => {
+    const isAtScrollBoundary = (direction: 'up' | 'down') => {
+      const activeSectionEl = sectionRefs.current[currentSection];
+      if (!activeSectionEl) return true;
+      const scrollContainer = activeSectionEl.querySelector('.overflow-y-auto');
+      if (!scrollContainer) return true;
+
+      if (direction === 'up') {
+        return scrollContainer.scrollTop <= 0;
+      } else {
+        return Math.ceil(scrollContainer.scrollTop + scrollContainer.clientHeight) >= scrollContainer.scrollHeight - 1;
+      }
+    };
+
     // 1. Wheel listener with a robust cooldown of 900ms
     const handleWheel = (e: WheelEvent) => {
-      e.preventDefault(); // Block default scrolling completely
-
       const now = Date.now();
-      if (now - lastScrollTime.current < 900) return;
-      if (isAnimating) return;
+      if (now - lastScrollTime.current < 900) {
+        e.preventDefault();
+        return;
+      }
+      if (isAnimating) {
+        e.preventDefault();
+        return;
+      }
 
       if (e.deltaY > 5) {
         // Scroll down
+        if (!isAtScrollBoundary('down')) return; // Let native scroll happen
+        e.preventDefault();
         if (currentSection < 3) {
           lastScrollTime.current = now;
           goToSection(currentSection + 1);
         }
       } else if (e.deltaY < -5) {
         // Scroll up
+        if (!isAtScrollBoundary('up')) return; // Let native scroll happen
+        e.preventDefault();
         if (currentSection > 0) {
           lastScrollTime.current = now;
           goToSection(currentSection - 1);
@@ -161,13 +182,15 @@ export default function Home() {
           if (now - lastScrollTime.current < 900) return;
 
           if (deltaY < 0) {
-            // Swiped up -> scroll down to next section
+            // Swiped up -> scrolling down page
+            if (!isAtScrollBoundary('down')) return;
             if (currentSection < 3) {
               lastScrollTime.current = now;
               goToSection(currentSection + 1);
             }
           } else {
-            // Swiped down -> scroll up to previous section
+            // Swiped down -> scrolling up page
+            if (!isAtScrollBoundary('up')) return;
             if (currentSection > 0) {
               lastScrollTime.current = now;
               goToSection(currentSection - 1);
@@ -179,18 +202,28 @@ export default function Home() {
 
     // 3. Keyboard events (ArrowUp, ArrowDown, PageUp, PageDown)
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (isAnimating) return;
+      if (isAnimating) {
+        e.preventDefault();
+        return;
+      }
 
       const now = Date.now();
-      if (now - lastScrollTime.current < 900) return;
+      if (now - lastScrollTime.current < 900) {
+        if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === 'ArrowUp' || e.key === 'PageUp') {
+           e.preventDefault();
+        }
+        return;
+      }
 
       if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+        if (!isAtScrollBoundary('down')) return;
         e.preventDefault();
         if (currentSection < 3) {
           lastScrollTime.current = now;
           goToSection(currentSection + 1);
         }
       } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+        if (!isAtScrollBoundary('up')) return;
         e.preventDefault();
         if (currentSection > 0) {
           lastScrollTime.current = now;
