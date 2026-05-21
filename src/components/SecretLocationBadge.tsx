@@ -74,10 +74,8 @@ export default function SecretLocationBadge() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [isMobile, repelX, repelY, repelRotate]);
 
-  if (isMobile) return null; // Only show on desktop margins to avoid cluttering mobile screens
-
   return (
-    <div className="fixed right-10 top-1/3 z-40 pointer-events-none select-none">
+    <div className="fixed right-2 md:right-10 top-24 md:top-1/3 z-40 pointer-events-none select-none origin-right scale-75 md:scale-100">
       {/* Ambient slow-drift floating wrapper */}
       <motion.div
         animate={{
