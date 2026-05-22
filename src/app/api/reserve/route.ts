@@ -43,7 +43,7 @@ export async function POST(request: Request) {
     // Check for Prisma unique constraint violation (P2002)
     if (error.code === 'P2002') {
       return NextResponse.json(
-        { success: false, error: 'Tu es déjà inscrit(e) ! 💥' },
+        { success: false, error: 'Tu es déjà inscrit(e) !' },
         { status: 409 }
       );
     }

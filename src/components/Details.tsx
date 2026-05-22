@@ -154,7 +154,7 @@ export default function Details() {
                         animate={{ scale: 1, opacity: 1 }}
                         className="bg-xp-dark text-xp-gold border-2 border-xp-gold p-2.5 font-heading font-black text-xs uppercase tracking-wider text-center rotate-[-1deg]"
                       >
-                        ⚠️ {error}
+                        {error}
                       </motion.div>
                     )}
 
@@ -172,7 +172,7 @@ export default function Details() {
                       className="relative group w-full flex items-center justify-center gap-2 bg-xp-gold text-xp-dark font-heading font-black text-sm sm:text-base py-3 border-[3px] border-xp-dark shadow-retro-flat cursor-pointer select-none rounded-none uppercase"
                     >
                       <div className="absolute -top-2 -right-3 w-8 h-4 bg-white/25 backdrop-blur-[1px] border border-white/30 rotate-15 pointer-events-none" />
-                      {isLoading ? 'ENREGISTREMENT...' : "S'INSCRIRE MAINTENANT ⚡"}
+                      {isLoading ? 'ENREGISTREMENT...' : "S'INSCRIRE MAINTENANT"}
                     </motion.button>
                   </form>
                 </motion.div>
@@ -184,9 +184,6 @@ export default function Details() {
                   className="text-center py-4"
                 >
                   <div className="inline-block bg-xp-gold text-xp-dark border-[3px] border-xp-dark p-6 shadow-retro-flat relative transform rotate-[-1.5deg]">
-                    <div className="absolute -top-4 -right-4 w-10 h-10 bg-xp-teal border-2 border-xp-dark rounded-full flex items-center justify-center text-lg font-bold shadow-[2px_2px_0px_#121212] rotate-12 animate-bounce">
-                      ⚡
-                    </div>
                     <h3 className="text-2xl sm:text-3xl font-display font-black uppercase text-3d-inverse leading-none mb-1">
                       BOOM !
                     </h3>

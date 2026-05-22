@@ -130,7 +130,7 @@ export default function AdminPage() {
                 
                 <div className="relative z-10 text-center">
                   <div className="bg-xp-gold text-xp-dark font-heading font-black text-xs uppercase px-3 py-1 border-2 border-xp-dark inline-block transform -rotate-2 skew-x-3 mb-6 shadow-[2px_2px_0px_#121212]">
-                    ACCÈS SÉCURISÉ 🔐
+                    ACCÈS SÉCURISÉ
                   </div>
                   
                   <h1 className="text-3xl sm:text-4xl font-display font-black uppercase text-3d-inverse leading-none mb-3">
@@ -161,7 +161,7 @@ export default function AdminPage() {
                         animate={{ scale: 1, opacity: 1 }}
                         className="bg-xp-dark text-xp-gold border-2 border-xp-gold p-3 font-heading font-black text-sm uppercase tracking-wider rotate-[-1deg]"
                       >
-                        ⚠️ {error}
+                        {error}
                       </motion.div>
                     )}
 
@@ -172,7 +172,7 @@ export default function AdminPage() {
                       whileTap={{ scale: 0.97 }}
                       className="w-full flex items-center justify-center gap-2 bg-xp-gold text-xp-dark font-heading font-black text-lg py-3.5 border-[3px] border-xp-dark shadow-retro-flat cursor-pointer select-none rounded-none uppercase"
                     >
-                      {isLoading ? 'DÉVERROUILLAGE...' : 'ENTRER ⚡'}
+                      {isLoading ? 'DÉVERROUILLAGE...' : 'ENTRER'}
                     </motion.button>
                   </form>
                 </div>
@@ -205,7 +205,7 @@ export default function AdminPage() {
                     whileTap={{ scale: 0.97 }}
                     className="flex items-center justify-center gap-2 bg-xp-teal text-xp-dark font-heading font-black text-sm py-2.5 px-5 border-[3px] border-xp-dark shadow-[3px_3px_0px_#121212] cursor-pointer rounded-none uppercase"
                   >
-                    📥 Exporter CSV
+                    Exporter CSV
                   </motion.button>
 
                   <motion.button
@@ -214,7 +214,7 @@ export default function AdminPage() {
                     whileTap={{ scale: 0.97 }}
                     className="flex items-center justify-center gap-2 bg-xp-red text-xp-alabaster font-heading font-black text-sm py-2.5 px-5 border-[3px] border-xp-dark shadow-[3px_3px_0px_#121212] cursor-pointer rounded-none uppercase"
                   >
-                    🚪 Déconnexion
+                    Déconnexion
                   </motion.button>
                 </div>
               </div>
@@ -222,7 +222,7 @@ export default function AdminPage() {
               {/* Stats Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div className="comic-panel bg-xp-gold text-xp-dark p-5 border-4 border-xp-dark shadow-retro-flat relative">
-                  <span className="absolute top-2 right-2 text-3xl">🎟️</span>
+                  <span className="absolute top-2 right-2 text-xs font-heading font-black bg-xp-dark text-xp-alabaster px-1.5 py-0.5 border border-xp-dark uppercase">Total</span>
                   <p className="font-heading font-black text-xs sm:text-sm uppercase tracking-wider text-xp-dark/70">
                     Total VIPs
                   </p>
@@ -232,7 +232,7 @@ export default function AdminPage() {
                 </div>
 
                 <div className="comic-panel bg-xp-alabaster text-xp-dark p-5 border-4 border-xp-dark shadow-retro-flat relative">
-                  <span className="absolute top-2 right-2 text-3xl">🔥</span>
+                  <span className="absolute top-2 right-2 text-xs font-heading font-black bg-xp-dark text-xp-alabaster px-1.5 py-0.5 border border-xp-dark uppercase">Live</span>
                   <p className="font-heading font-black text-xs sm:text-sm uppercase tracking-wider text-xp-dark/70">
                     Aujourd'hui
                   </p>
@@ -246,7 +246,7 @@ export default function AdminPage() {
                 </div>
 
                 <div className="comic-panel bg-xp-teal text-xp-dark p-5 border-4 border-xp-dark shadow-retro-flat relative">
-                  <span className="absolute top-2 right-2 text-3xl">📈</span>
+                  <span className="absolute top-2 right-2 text-xs font-heading font-black bg-xp-dark text-xp-alabaster px-1.5 py-0.5 border border-xp-dark uppercase">Rate</span>
                   <p className="font-heading font-black text-xs sm:text-sm uppercase tracking-wider text-xp-dark/70">
                     Taux d'email unique
                   </p>
@@ -272,7 +272,9 @@ export default function AdminPage() {
                       onChange={(e) => setSearchTerm(e.target.value)}
                       className="w-full border-[3px] border-xp-dark bg-xp-alabaster text-xp-dark px-4 py-2 pl-10 font-sans font-bold placeholder-xp-gray/40 rounded-none focus:outline-none focus:bg-xp-gold transition-colors text-sm"
                     />
-                    <span className="absolute left-3.5 top-2.5 text-sm text-xp-dark">🔍</span>
+                    <svg className="absolute left-3.5 top-[13px] w-4 h-4 text-xp-dark" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
                   </div>
                 </div>
 
@@ -291,7 +293,7 @@ export default function AdminPage() {
                         {filteredReservations.length === 0 ? (
                           <tr>
                             <td colSpan={3} className="px-6 py-10 text-center font-heading font-black text-base uppercase text-xp-gray tracking-wide">
-                              Aucune réservation trouvée 💨
+                              Aucune réservation trouvée
                             </td>
                           </tr>
                         ) : (
