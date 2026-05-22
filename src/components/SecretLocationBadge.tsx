@@ -115,7 +115,7 @@ export default function SecretLocationBadge() {
           <MapPinIcon className="w-7 h-7 text-xp-dark relative z-10 mb-1 group-hover:scale-110 transition-transform duration-300" />
 
           <span className="font-display font-black text-xs text-xp-dark uppercase tracking-tight relative z-10 leading-tight">
-            SECRET
+            PRIVATE
           </span>
           <span className="font-display font-black text-xs text-xp-dark uppercase tracking-tight relative z-10 leading-tight">
             LOCATION

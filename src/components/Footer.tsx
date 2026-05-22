@@ -49,7 +49,7 @@ export default function Footer() {
           
           <div className="mt-6 flex flex-col gap-5 sm:gap-6">
             <p className="font-sans font-black text-sm uppercase leading-relaxed tracking-wide mt-2">
-              L'accès à la <span className="underline decoration-xp-red decoration-2">Secret Location</span> est restreint. Réservez vos entrées privées dès maintenant auprès de nos organisateurs.
+              L'accès à la <span className="underline decoration-xp-red decoration-2">Private Location</span> est restreint. Réservez vos entrées privées dès maintenant auprès de nos organisateurs.
             </p>
 
             <div className="flex flex-col gap-4">
@@ -95,7 +95,7 @@ export default function Footer() {
           </div>
 
           <div className="mt-6 flex flex-col sm:flex-row items-center gap-6">
-            {/* Age Badge */}
+            {/* Age Badge 
             <div
               className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-4 border-xp-red flex items-center justify-center bg-xp-dark shadow-retro-flat animate-glow select-none shrink-0"
               aria-label="Événement réservé aux personnes de 18 ans et plus"
@@ -104,13 +104,13 @@ export default function Footer() {
                 18+
               </span>
             </div>
-
+              */}
             <div className="flex flex-col gap-2">
               <h3 className="font-display font-black text-lg sm:text-xl uppercase tracking-tight text-xp-red leading-none">
                 ACCÈS STRICT
               </h3>
               <p className="font-sans font-bold text-xs sm:text-sm text-xp-gray uppercase leading-relaxed tracking-wide">
-                Identité requise à l'entrée. La direction se réserve le droit d'admission.
+                Vous devez impérativement présenter un ticket valide pour participer à l'événement.
               </p>
             </div>
           </div>
@@ -118,7 +118,7 @@ export default function Footer() {
           <div className="border-t-3 border-dotted border-xp-dark/20 mt-6 pt-4 flex items-center gap-2 text-xp-red">
             <MapPinIcon className="w-5 h-5" />
             <span className="font-heading font-black text-xs uppercase tracking-widest">
-              LIEU SECRET &bull; GONAÏVES
+              LIEU PRIVÉ &bull; GONAÏVES
             </span>
           </div>
         </motion.div>

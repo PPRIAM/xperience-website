@@ -9,7 +9,7 @@ const details = [
   {
     icon: MapPinIcon,
     label: 'Lieu',
-    value: 'Lieu Secret',
+    value: 'Lieu Privé',
     sub: 'Événement Privé',
     accent: 'bg-xp-red',
   },

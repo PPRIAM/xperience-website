@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform, useMotionValue, useSpring, animate } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import { PhoneIcon } from '@heroicons/react/24/solid';
+import Image from 'next/image';
 
 export default function Hero({ scrollContainerRef }: { scrollContainerRef?: React.RefObject<HTMLElement | null> }) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -81,16 +82,46 @@ export default function Hero({ scrollContainerRef }: { scrollContainerRef?: Reac
       {/* === Main content — scroll-parallaxed === */}
       <div className="flex-grow flex flex-col items-center justify-center text-center px-4 py-12 md:py-20 relative z-10 gap-6">
 
-        {/* Big sticker-style "Xperience" wordmark — parallaxes upward on scroll */}
+        {/* Big sticker-style "Xperience" logo — parallaxes upward on scroll */}
         <motion.div
           style={{ y: titleY, opacity: titleOp }}
-          initial={{ opacity: 0, scale: 0.6, rotate: -4 }}
-          animate={{ opacity: 1, scale: 1, rotate: -2 }}
-          transition={{ type: 'spring', stiffness: 180, damping: 14 }}
+          initial={{ opacity: 0, scale: 0.2, rotate: -20 }}
+          animate={{ 
+            opacity: 1, 
+            scale: 1, 
+            rotate: -2,
+            y: [0, -12, 0],
+            filter: [
+              "drop-shadow(0px 0px 0px rgba(255, 204, 0, 0))", 
+              "drop-shadow(0px 0px 25px rgba(255, 204, 0, 0.7))", 
+              "drop-shadow(0px 0px 12px rgba(255, 204, 0, 0.4))"
+            ]
+          }}
+          transition={{ 
+            opacity: { duration: 0.5, ease: "easeOut" },
+            scale: { type: 'spring', damping: 12, stiffness: 200, mass: 1 },
+            rotate: { type: 'spring', damping: 12, stiffness: 200, mass: 1 },
+            y: { repeat: Infinity, repeatType: "mirror", duration: 3, ease: "easeInOut", delay: 0.2 },
+            filter: { repeat: Infinity, repeatType: "mirror", duration: 3, ease: "easeInOut", delay: 0.2 }
+          }}
+          whileHover={{ 
+            scale: 1.08, 
+            rotate: 2, 
+            filter: "drop-shadow(0px 0px 30px rgba(255, 204, 0, 0.9))",
+            transition: { type: 'spring', stiffness: 300, damping: 15 }
+          }}
+          whileTap={{ scale: 0.95, rotate: -4 }}
+          className="cursor-pointer"
         >
-          <h1 className="hero-title font-display font-black uppercase leading-none select-none">
-            Xperience
-          </h1>
+          <div className="relative w-72 h-32 sm:w-96 sm:h-48 md:w-[32rem] md:h-64 drop-shadow-2xl">
+            <Image 
+              src="/xperience.png" 
+              alt="Xperience Event Logo" 
+              fill 
+              className="object-contain pointer-events-none"
+              priority
+            />
+          </div>
         </motion.div>
 
         {/* Date badge — slightly slower parallax (depth effect) + gloss sticker styling */}
@@ -187,7 +218,7 @@ export default function Hero({ scrollContainerRef }: { scrollContainerRef?: Reac
           {/* Left: Location */}
           <div className="flex flex-col items-center md:items-start gap-1">
             <span className="font-display font-black text-base xs:text-lg sm:text-xl md:text-2xl text-xp-dark uppercase leading-none tracking-tight">
-              SECRET LOCATION
+              PRIVATE LOCATION
             </span>
             <motion.span 
               whileHover={{ scale: 1.1, rotate: -2, y: -1 }}

@@ -2,11 +2,12 @@
 
 import { motion } from 'framer-motion';
 import { UserIcon } from '@heroicons/react/24/solid';
+import Image from 'next/image';
 
 const artists = [
-  { id: 1, role: "TÊTE D'AFFICHE", time: '00h00 — 02h00', borderCol: 'border-xp-red', nameBg: 'bg-xp-red', textCol: 'text-xp-alabaster' },
-  { id: 2, role: 'DJ INVITÉ', time: '22h00 — 00h00', borderCol: 'border-xp-gold', nameBg: 'bg-xp-gold', textCol: 'text-xp-dark' },
-  { id: 3, role: 'INVITÉ SPÉCIAL', time: '20h00 — 22h00', borderCol: 'border-xp-teal', nameBg: 'bg-xp-teal', textCol: 'text-xp-dark' },
+  { id: 1, role: "DJ Trinity", borderCol: 'border-xp-red', nameBg: 'bg-xp-red', textCol: 'text-xp-alabaster', image: '/line-up/Dj 3N.jpg' },
+  { id: 2, role: 'dj rotchild', borderCol: 'border-xp-gold', nameBg: 'bg-xp-gold', textCol: 'text-xp-dark', image: '/line-up/IMG-20241216-WA0006.jpg' },
+  { id: 3, role: 'Dj tyga', borderCol: 'border-xp-teal', nameBg: 'bg-xp-teal', textCol: 'text-xp-dark', image: '/line-up/IMG-20260521-WA0048.jpg' },
 ];
 
 const containerVariants = {
@@ -46,9 +47,16 @@ export default function LineUp() {
             </motion.span>
             <span className="text-xp-alabaster uppercase tracking-[0.2em] text-xs font-heading font-black">présente</span>
           </div>
-          <h2 className="text-4xl sm:text-6xl md:text-8xl font-display font-black text-xp-alabaster uppercase text-3d leading-none heading-dotted-orange inline-block pb-6">
-            La Programmation
-          </h2>
+          <div className="relative w-full max-w-[800px] aspect-[4/1] mx-auto inline-block pb-6 heading-dotted-orange">
+            <Image 
+              src="/prog.png" 
+              alt="La Programmation" 
+              fill 
+              className="object-contain" 
+              sizes="(max-width: 768px) 100vw, 800px"
+              priority
+            />
+          </div>
         </motion.div>
 
         {/* Dynamic Outlined Artist Silhouette Grid (NO CARDS) */}
@@ -75,12 +83,13 @@ export default function LineUp() {
                 <div className="absolute inset-0 halftone-dark opacity-15 pointer-events-none" />
                 
                 {/* Outlined Vector Character Silhouette Placement */}
-                <UserIcon className="w-32 h-32 sm:w-40 sm:h-40 text-xp-dark opacity-35 transform translate-y-4 group-hover:scale-110 transition-transform duration-300" aria-hidden="true" />
+                {artist.image ? (
+                  <Image src={artist.image} alt={artist.role} fill className="object-cover group-hover:scale-110 transition-transform duration-300" sizes="(max-width: 768px) 192px, 256px" />
+                ) : (
+                  <UserIcon className="w-32 h-32 sm:w-40 sm:h-40 text-xp-dark opacity-35 transform translate-y-4 group-hover:scale-110 transition-transform duration-300" aria-hidden="true" />
+                )}
                 
-                {/* Skewed Timeline Badge floating over the cutout */}
-                <div className="absolute bottom-4 bg-xp-dark text-xp-alabaster border-2 border-xp-alabaster text-[10px] sm:text-xs font-heading font-black px-2 py-0.5 sm:px-3 sm:py-1 rounded-sm tracking-widest uppercase transform rotate-2">
-                  {artist.time}
-                </div>
+
               </div>
 
               {/* Skewed Nameplate - Narration Block below (adhering to Page 5/6 guidelines) */}
