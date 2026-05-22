@@ -5,7 +5,7 @@ import { UserIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 
 const artists = [
-  { id: 1, role: "DJ Trinity", borderCol: 'border-xp-red', nameBg: 'bg-xp-red', textCol: 'text-xp-alabaster', image: '/line-up/Dj 3N.jpg' },
+  { id: 1, role: "DJ Trinity", borderCol: 'border-xp-red', nameBg: 'bg-xp-red', textCol: 'text-xp-alabaster', image: '/line-up/Dj_3N.jpg' },
   { id: 2, role: 'dj rotchild', borderCol: 'border-xp-gold', nameBg: 'bg-xp-gold', textCol: 'text-xp-dark', image: '/line-up/IMG-20241216-WA0006.jpg' },
   { id: 3, role: 'Dj tyga', borderCol: 'border-xp-teal', nameBg: 'bg-xp-teal', textCol: 'text-xp-dark', image: '/line-up/IMG-20260521-WA0048.jpg' },
 ];
