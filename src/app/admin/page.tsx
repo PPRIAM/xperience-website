@@ -12,9 +12,29 @@ export default function AdminPage() {
   const [reservations, setReservations] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Check auth status on mount
+  // Enable scrolling specifically for the admin dashboard on mount and restore on unmount
   useEffect(() => {
+    // Override the viewport lock styles from globals.css
+    document.documentElement.style.setProperty('overflow', 'auto', 'important');
+    document.documentElement.style.setProperty('height', 'auto', 'important');
+    document.documentElement.style.setProperty('position', 'relative', 'important');
+
+    document.body.style.setProperty('overflow', 'auto', 'important');
+    document.body.style.setProperty('height', 'auto', 'important');
+    document.body.style.setProperty('position', 'relative', 'important');
+
     fetchReservations();
+
+    return () => {
+      // Revert style overrides on unmount to keep the main homepage locked
+      document.documentElement.style.removeProperty('overflow');
+      document.documentElement.style.removeProperty('height');
+      document.documentElement.style.removeProperty('position');
+
+      document.body.style.removeProperty('overflow');
+      document.body.style.removeProperty('height');
+      document.body.style.removeProperty('position');
+    };
   }, []);
 
   const fetchReservations = async () => {
@@ -127,7 +147,7 @@ export default function AdminPage() {
 
   if (isFetching) {
     return (
-      <div className="min-h-screen w-screen bg-xp-dark flex items-center justify-center text-xp-alabaster font-heading font-black text-2xl uppercase tracking-widest">
+      <div className="min-h-screen w-full bg-xp-dark flex items-center justify-center text-xp-alabaster font-heading font-black text-2xl uppercase tracking-widest">
         <div className="flex flex-col items-center">
           <motion.div
             animate={{ rotate: 360 }}
@@ -141,7 +161,7 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen w-screen bg-xp-dark tropical-bg py-12 px-4 sm:px-6 lg:px-8 overflow-y-auto relative select-none">
+    <div className="min-h-screen w-full bg-xp-dark tropical-bg py-12 px-4 sm:px-6 lg:px-8 overflow-y-auto relative select-none">
       <div className="absolute inset-0 halftone-overlay pointer-events-none opacity-10" />
 
       <div className="max-w-6xl mx-auto relative z-10">
